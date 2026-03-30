@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caprae Capital Services - Private Equity Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1A1A1A;
+            line-height: 1.6;
+            background: #FFFFFF;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: #FFFFFF;
+            border-bottom: 1px solid #E8E8E8;
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #1B2A4A;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #1B2A4A;
+        }
+
+        .nav-links a.active {
+            color: #1B2A4A;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            background: #1B2A4A;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #C5A55A;
+            color: white;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #1B2A4A;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Sections */
+        section {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        section.active {
+            display: block;
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #FFFFFF;
+            padding: 120px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #1B2A4A;
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .button-primary {
+            background: #1B2A4A;
+            color: white;
+            padding: 16px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #1B2A4A;
+            cursor: pointer;
+        }
+
+        .button-primary:hover {
+            background: #C5A55A;
+            border-color: #C5A55A;
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: #1B2A4A;
+            padding: 16px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #1B2A4A;
+            cursor: pointer;
+        }
+
+        .button-secondary:hover {
+            background: #1B2A4A;
+            color: white;
+        }
+
+        .hero-illustration {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: #F0F4F8;
+            padding: 32px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card .number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #1B2A4A;
+            margin-bottom: 8px;
+        }
+
+        .stat-card .label {
+            font-size: 13px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        /* Stats Banner */
+        .stats-banner {
+            background: #F0F4F8;
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item .value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #1B2A4A;
+            margin-bottom: 8px;
+        }
+
+        .stat-item .title {
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 100px 0;
+            background: #FFFFFF;
+        }
+
+        .section-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #1B2A4A;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 80px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: #FAFAFA;
+            padding: 48px 32px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid #E8E8E8;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: #1B2A4A;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #C5A55A;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: #1B2A4A;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            color: #555;
+            font-size: 14px;
+            padding: 8px 0;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-price {
+            color: #1B2A4A;
+            font-weight: 600;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        /* Who We Serve */
+        .who-serve {
+            background: #F0F4F8;
+            padding: 80px 0;
+            margin-top: 100px;
+        }
+
+        .serve-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .serve-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #E8E8E8;
+        }
+
+        .serve-icon {
+            width: 60px;
+            height: 60px;
+            background: #1B2A4A;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #C5A55A;
+            font-size: 28px;
+        }
+
+        .serve-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: #1B2A4A;
+            margin-bottom: 12px;
+        }
+
+        .serve-card p {
+            color: #555;
+            font-size: 15px;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: #FFFFFF;
+            padding: 100px 0;
+        }
+
+        .team-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: #1B2A4A;
+            margin-bottom: 10px;
+        }
+
+        .team-subheading {
+            color: #555;
+            margin-bottom: 60px;
+            font-size: 16px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .member-photo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #1B2A4A 0%, #C5A55A 100%);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .team-member h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: #1B2A4A;
+            margin-bottom: 4px;
+        }
+
+        .team-member p {
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* How It Works */
+        .how-section {
+            background: #F0F4F8;
+            padding: 100px 0;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 20px;
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
+
+        .timeline-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: #C5A55A;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item:first-child::after {
+            display: none;
+        }
+
+        .timeline-number {
+            width: 50px;
+            height: 50px;
+            background: #1B2A4A;
+            color: #C5A55A;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0 auto 16px;
+        }
+
+        .timeline-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            color: #1B2A4A;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            color: #555;
+            font-size: 13px;
+        }
+
+        /* Engagement Timeline */
+        .engagement-timeline {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 80px;
+        }
+
+        .engagement-timeline h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: #1B2A4A;
+            margin-bottom: 30px;
+        }
+
+        .engagement-items {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+        }
+
+        .engagement-item {
+            background: #F0F4F8;
+            padding: 20px;
+            border-radius: 6px;
+            text-align: center;
+            border-left: 4px solid #C5A55A;
+        }
+
+        .engagement-item p {
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        /* Beyond Sourcing */
+        .beyond-sourcing {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .beyond-sourcing h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: #1B2A4A;
+            margin-bottom: 30px;
+        }
+
+        .beyond-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .beyond-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #E8E8E8;
+            color: #555;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .beyond-item::before {
+            content: '→';
+            color: #C5A55A;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        /* Results Section */
+        .results-section {
+            background: #FFFFFF;
+            padding: 100px 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 100px;
+            text-align: center;
+        }
+
+        .metric-item {
+            padding: 40px;
+            background: #F0F4F8;
+            border-radius: 8px;
+        }
+
+        .metric-item .value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: #1B2A4A;
+            margin-bottom: 12px;
+        }
+
+        .metric-item .label {
+            color: #555;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            margin-bottom: 100px;
+        }
+
+        .testimonials-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: #1B2A4A;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            border-left: 4px solid #C5A55A;
+        }
+
+        .testimonial-quote {
+            color: #1B2A4A;
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: #1B2A4A;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-title {
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* Tech Stack */
+        .tech-stack-section {
+            background: #F0F4F8;
+            padding: 60px 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .tech-stack-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: #1B2A4A;
+            margin-bottom: 30px;
+        }
+
+        .tech-tools {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .tech-tool {
+            background: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            color: #555;
+            font-size: 14px;
+            border: 1px solid #E8E8E8;
+        }
+
+        .tech-value {
+            color: #1B2A4A;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background: #FFFFFF;
+            padding: 100px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .pricing-card {
+            background: #FAFAFA;
+            padding: 50px 40px;
+            border-radius: 8px;
+            border: 1px solid #E8E8E8;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            background: white;
+            border: 2px solid #C5A55A;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'FEATURED';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #C5A55A;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .pricing-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: #1B2A4A;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .pricing-price {
+            font-size: 32px;
+            color: #1B2A4A;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .pricing-price-note {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .pricing-hours {
+            color: #1B2A4A;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .pricing-features li {
+            color: #555;
+            font-size: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .pricing-features li::before {
+            content: '✓ ';
+            color: #C5A55A;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-cta {
+            width: 100%;
+            padding: 16px;
+            background: #1B2A4A;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .pricing-cta:hover {
+            background: #C5A55A;
+        }
+
+        /* Comparison Table */
+        .comparison-section {
+            margin-bottom: 80px;
+        }
+
+        .comparison-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: #1B2A4A;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #E8E8E8;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: #F0F4F8;
+            color: #1B2A4A;
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            border-right: 1px solid #E8E8E8;
+        }
+
+        .comparison-table th:first-child {
+            background: #FAFAFA;
+        }
+
+        .comparison-table td {
+            padding: 20px;
+            border-right: 1px solid #E8E8E8;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .comparison-table tr:not(:last-child) td {
+            border-bottom: 1px solid #E8E8E8;
+        }
+
+        .comparison-table .caprae {
+            background: #FFFBF0;
+            font-weight: 600;
+            color: #1B2A4A;
+        }
+
+        .comparison-table .caprae-header {
+            background: #C5A55A;
+            color: white;
+            font-weight: 700;
+        }
+
+        .checkmark {
+            color: #C5A55A;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .xmark {
+            color: #999;
+        }
+
+        /* Why Caprae */
+        .why-caprae {
+            margin-bottom: 80px;
+        }
+
+        .why-caprae h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            color: #1B2A4A;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .why-item {
+            background: linear-gradient(135deg, #1B2A4A 0%, rgba(27, 42, 74, 0.8) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .why-item h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .why-item p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #1B2A4A;
+            color: white;
+            padding: 60px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .footer-tagline {
+            color: #C5A55A;
+            font-size: 16px;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .footer-contact {
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .footer-contact a {
+            color: #C5A55A;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: white;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: #B0B0B0;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #C5A55A;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: #B0B0B0;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+                border-bottom: 1px solid #E8E8E8;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s;
+                align-items: flex-start;
+            }
+
+            .nav-links.open {
+                max-height: 300px;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 80px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-illustration {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .serve-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .timeline {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 10px;
+            }
+
+            .timeline-item::after {
+                display: none;
+            }
+
+            .engagement-items {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .beyond-list {
+                grid-template-columns: 1fr;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .section-heading {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .comparison-table {
+                font-size: 12px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 28px;
+            }
+
+            .section-heading {
+                font-size: 28px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-number {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .button-primary,
+            .button-secondary {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CAPRAE</div>
+            <ul class="nav-links">
+                <li><a onclick="switchTab('home')">Home</a></li>
+                <li><a onclick="switchTab('services')">Services</a></li>
+                <li><a onclick="switchTab('how')">How It Works</a></li>
+                <li><a onclick="switchTab('results')">Results</a></li>
+                <li><a onclick="switchTab('pricing')">Pricing</a></li>
+            </ul>
+            <button class="cta-button" onclick="scrollToContact()">Contact Us</button>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME SECTION -->
+    <section id="home" class="active">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>End-to-End Private Equity Services, A to Z</h1>
+                    <p>Completely white-labeled. Fully outsourced. Results-driven. At 30-60% less than traditional providers.</p>
+                    <div class="hero-buttons">
+                        <button class="button-primary" onclick="switchTab('services')">Explore Services</button>
+                        <button class="button-secondary" onclick="switchTab('pricing')">View Pricing</button>
+                    </div>
+                </div>
+                <div class="hero-illustration">
+                    <div class="stat-card">
+                        <div class="number">$110M+</div>
+                        <div class="label">Deals Closed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">70</div>
+                        <div class="label">Hours/Month</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">$50K+</div>
+                        <div class="label">Annual Savings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">5-10</div>
+                        <div class="label">Meetings/Month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Banner -->
+        <div class="stats-banner">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="value">$110M+</div>
+                        <div class="title">Deals Closed (2026 YTD)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">70</div>
+                        <div class="title">Hours/Month Dedicated</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">$50K+</div>
+                        <div class="title">Annual Tech Savings</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="value">5-10</div>
+                        <div class="title">Meetings/Month Secured</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Who We Serve -->
+        <div class="who-serve">
+            <div class="container">
+                <h2 class="section-heading">Who We Serve</h2>
+                <div class="serve-grid">
+                    <div class="serve-card">
+                        <div class="serve-icon">🏯</div>
+                        <h3>Searchers & Acquisition Teams</h3>
+                        <p>Scale your deal pipeline with professional sourcing, outreach, and due diligence support.</p>
+                    </div>
+                    <div class="serve-card">
+                        <div class="serve-icon">🚀</div>
+                        <h3>Entrepreneurs</h3>
+                        <p>Grow your business with fractional operations, marketing, and strategic advising.</p>
+                    </div>
+                    <div class="serve-card">
+                        <div class="serve-icon">💼</div>
+                        <h3>PE & Investment Banks</h3>
+                        <p>Supplement your team with dedicated resources for sourcing, diligence, and execution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="team-section">
+            <div class="container">
+                <h2 class="team-heading">Led By Operators Who've Been In Your Shoes</h2>
+                <p class="team-subheading">Deep expertise across PE, startups, and transaction management</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-photo">KH</div>
+                        <h4>Kevin Hong</h4>
+                        <p>Co-Founder & CEO</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo">HJ</div>
+                        <h4>Hereford Johnson</h4>
+                        <p>Chief Operations</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo">ZB</div>
+                        <h4>Zackary Beckham</h4>
+                        <p>Head of Growth</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo">JB</div>
+                        <h4>Jeff Blacklock</h4>
+                        <p>VP of Advisory</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services">
+        <div class="container services-section">
+            <h2 class="section-heading">Comprehensive Services for Every Stage</h2>
+            <p class="section-subtitle">End-to-end coverage from deal sourcing to post-acquisition growth</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Search as a Service</h3>
+                    <p>Our flagship offering: Complete deal sourcing tailored to your criteria.</p>
+                    <ul class="service-features">
+                        <li>Lead generation & prospecting</li>
+                        <li>Email list cleansing & validation</li>
+                        <li>LeadGen QA software</li>
+                        <li>Cold calling campaigns</li>
+                        <li>Email automation</li>
+                        <li>PR & branding</li>
+                        <li>Cold call analytics</li>
+                    </ul>
+                    <div class="service-price">Starting at $1,250/mo + 2% success fee</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💡</div>
+                    <h3>Entrepreneurship as a Service</h3>
+                    <p>Fractional operations for growth-stage entrepreneurs and founders.</p>
+                    <ul class="service-features">
+                        <li>Cold calling & LinkedIn outreach</li>
+                        <li>Social media management</li>
+                        <li>Newsletter & email campaigns</li>
+                        <li>Handwritten letter campaigns</li>
+                        <li>Software development</li>
+                        <li>Press releases & PR</li>
+                        <li>Marketing optimization</li>
+                    </ul>
+                    <div class="service-price">$1,000/mo • 40 hrs/month</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI-Readiness as a Service</h3>
+                    <p>Prepare your business for the AI era with comprehensive tech strategy.</p>
+                    <ul class="service-features">
+                        <li>Technology due diligence</li>
+                        <li>ROI optimization</li>
+                        <li>AI-driven automation</li>
+                        <li>Process documentation</li>
+                        <li>Tool stack optimization</li>
+                        <li>Team training & adoption</li>
+                    </ul>
+                    <div class="service-price">Custom pricing</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Tech Development</h3>
+                    <p>From MVP to full-stack platforms, built with modern frameworks.</p>
+                    <ul class="service-features">
+                        <li>MVP development</li>
+                        <li>Full-stack platforms</li>
+                        <li>Digital marketing tools</li>
+                        <li>Project management</li>
+                        <li>Agile implementation</li>
+                        <li>Quality assurance</li>
+                    </ul>
+                    <div class="service-price">Project-based</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Post-Acquisition Strategy</h3>
+                    <p>Scale acquired businesses with hands-on growth programs and advisory.</p>
+                    <ul class="service-features">
+                        <li>Growth program design</li>
+                        <li>Fractional CXO services</li>
+                        <li>Operational optimization</li>
+                        <li>Team expansion planning</li>
+                        <li>Process automation</li>
+                        <li>Performance metrics</li>
+                    </ul>
+                    <div class="service-price">Custom pricing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section id="how">
+        <div class="container how-section">
+            <h2 class="section-heading">A Proven Process</h2>
+            <p class="section-subtitle">Seven-step methodology refined through hundreds of deals</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <h4>Define</h4>
+                    <p>You share industry criteria</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <h4>Source</h4>
+                    <p>We find off-market deals</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <h4>Review</h4>
+                    <p>Our team reviews prospects</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <h4>Present</h4>
+                    <p>Curated deals weekly</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <h4>Refine</h4>
+                    <p>Adjust criteria & approve</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">6</div>
+                    <h4>Outreach</h4>
+                    <p>Multi-channel campaigns</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">7</div>
+                    <h4>Connect</h4>
+                    <p>You join exploratory calls</p>
+                </div>
+            </div>
+
+            <div class="engagement-timeline">
+                <h3>Engagement Timeline</h3>
+                <div class="engagement-items">
+                    <div class="engagement-item">
+                        <p>Week 1-2: Lead Gen Refinement</p>
+                    </div>
+                    <div class="engagement-item">
+                        <p>Week 2: Branding Session</p>
+                    </div>
+                    <div class="engagement-item">
+                        <p>Week 2-8: Pipeline Analysis</p>
+                    </div>
+                    <div class="engagement-item">
+                        <p>Week 3-8: Cold Calls</p>
+                    </div>
+                    <div class="engagement-item">
+                        <p>Week 5-8: Additional Outreach</p>
+                    </div>
+                    <div class="engagement-item">
+                        <p>Week 6-8: Deal Flow Analysis</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="beyond-sourcing">
+                <h3>Beyond Deal Sourcing</h3>
+                <div class="beyond-list">
+                    <div class="beyond-item">Deal Structuring</div>
+                    <div class="beyond-item">Advisorship</div>
+                    <div class="beyond-item">Intros to Bankers & Investors</div>
+                    <div class="beyond-item">Post-Acquisition Support</div>
+                    <div class="beyond-item">Preliminary Due Diligence</div>
+                    <div class="beyond-item">Research & Financial Modeling</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS SECTION -->
+    <section id="results">
+        <div class="container results-section">
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="value">$110M+</div>
+                    <div class="label">Total Deals Closed (2026 YTD)</div>
+                </div>
+                <div class="metric-item">
+                    <div class="value">$50M+</div>
+                    <div class="label">Sourced & DD'd (2025)</div>
+                </div>
+                <div class="metric-item">
+                    <div class="value">5-10</div>
+                    <div class="label">Meetings/Month Average</div>
+                </div>
+                <div class="metric-item">
+                    <div class="value">$50K+</div>
+                    <div class="label">Annual Tech Savings</div>
+                </div>
+            </div>
+
+            <div class="testimonials-section">
+                <h2>Client Testimonials</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"Caprae secured advanced meetings within just 2 months. The team's professionalism and dedication transformed our sourcing pipeline."</div>
+                        <div class="testimonial-author">Jeff Blacklock</div>
+                        <div class="testimonial-title">Valwell Technologies</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"We closed a $20M+ deal in 6 months with Caprae's comprehensive support. Their post-acquisition guidance was invaluable."</div>
+                        <div class="testimonial-author">Steve Schepman</div>
+                        <div class="testimonial-title">Gondor Capital</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"I consistently receive 5-10 qualified meetings monthly. Caprae has become an essential part of our search strategy."</div>
+                        <div class="testimonial-author">Top 10 MBA Graduate</div>
+                        <div class="testimonial-title">Independent Searcher</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-stack-section">
+                <h3>Included Tech Stack</h3>
+                <p style="color: #555; margin-bottom: 20px; font-size: 15px;">Professional tools included at no extra cost — estimated $8,500/month value</p>
+                <div class="tech-tools">
+                    <div class="tech-tool">Apollo.io</div>
+                    <div class="tech-tool">S&P Capital IQ</div>
+                    <div class="tech-tool">Bloomberg Terminal</div>
+                    <div class="tech-tool">PitchBook</div>
+                    <div class="tech-tool">Grata</div>
+                    <div class="tech-tool">SourceScrub</div>
+                    <div class="tech-tool">Cohesive</div>
+                </div>
+                <div class="tech-value">Estimated value: $8,500/month — Included free with your membership</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing">
+        <div class="container pricing-section">
+            <h2 class="section-heading">Transparent, Value-Driven Pricing</h2>
+            <p class="section-subtitle">30-60% less than traditional providers</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-name">Search as a Service</div>
+                    <div class="pricing-price">$1,250</div>
+                    <div class="pricing-price-note">/month + 2% success fee</div>
+                    <div class="pricing-hours">70 hours/month dedicated</div>
+                    <ul class="pricing-features">
+                        <li>Lead generation</li>
+                        <li>Email list cleansing</li>
+                        <li>LeadGen QA software</li>
+                        <li>Financial modeling</li>
+                        <li>Market research</li>
+                        <li>Due diligence setup</li>
+                        <li>Cold calling</li>
+                        <li>Email automation</li>
+                        <li>PR & branding</li>
+                        <li>Deal advisory</li>
+                        <li>Team of associates</li>
+                        <li>Cold call analytics</li>
+                    </ul>
+                    <button class="pricing-cta">Get Started</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-name">Entrepreneurship as a Service</div>
+                    <div class="pricing-price">$1,000</div>
+                    <div class="pricing-price-note">/month</div>
+                    <div class="pricing-hours">40 hours/month dedication</div>
+                    <ul class="pricing-features">
+                        <li>Cold calling</li>
+                        <li>LinkedIn outreach</li>
+                        <li>Social media management</li>
+                        <li>Newsletters</li>
+                        <li>Email campaigns</li>
+                        <li>Handwritten letters</li>
+                        <li>Software development</li>
+                        <li>Press releases & PR</li>
+                    </ul>
+                    <button class="pricing-cta">Get Started</button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-name">Custom / Enterprise</div>
+                    <div class="pricing-price">Let's Talk</div>
+                    <div class="pricing-price-note">Contact for pricing</div>
+                    <div class="pricing-hours">For PE firms, investment banks, larger teams</div>
+                    <ul class="pricing-features">
+                        <li>Fully customizable</li>
+                        <li>Dedicated team</li>
+                        <li>White-labeled</li>
+                        <li>Scalable hours</li>
+                        <li>Priority support</li>
+                        <li>Custom integrations</li>
+                        <li>Strategic advisory</li>
+                        <li>Post-acq support</li>
+                    </ul>
+                    <button class="pricing-cta">Contact Us</button>
+                </div>
+            </div>
+
+            <div class="comparison-section">
+                <h2>How Caprae Compares</h2>
+                <table class="comparison-table">
+                    <tr>
+                        <th>Feature</th>
+                        <th class="caprae-header">Caprae Capital</th>
+                        <th>Traditional Advisors</th>
+                        <th>In-House Team</th>
+                        <th>Freelancers</th>
+                    </tr>
+                    <tr>
+                        <td>Monthly Cost</td>
+                        <td class="caprae"><span class="checkmark">✓</span> $1,250</td>
+                        <td>$3,000-5,000+</td>
+                        <td>$15,000+</td>
+                        <td>$2,000-4,000</td>
+                    </tr>
+                    <tr>
+                        <td>Tech Stack Included</td>
+                        <td class="caprae"><span class="checkmark">✓</span> ($50K+ value)</td>
+                        <td><span class="xmark">✗</span></td>
+                        <td><span class="xmark">✗</span></td>
+                        <td><span class="xmark">✗</span></td>
+                    </tr>
+                    <tr>
+                        <td>Dedicated Team</td>
+                        <td class="caprae"><span class="checkmark">✓</span> (70hrs/mo)</td>
+                        <td>Limited</td>
+                        <td><span class="checkmark">✓</span></td>
+                        <td>Variable</td>
+                    </tr>
+                    <tr>
+                        <td>Deal Advisory</td>
+                        <td class="caprae"><span class="checkmark">✓</span></td>
+                        <td><span class="checkmark">✓</span></td>
+                        <td><span class="xmark">✗</span></td>
+                        <td><span class="xmark">✗</span></td>
+                    </tr>
+                    <tr>
+                        <td>Success Fee</td>
+                        <td class="caprae">2%</td>
+                        <td>3-5%</td>
+                        <td>N/A</td>
+                        <td>N/A</td>
+                    </tr>
+                    <tr>
+                        <td>White-Labeled</td>
+                        <td class="caprae"><span class="checkmark">✓</span></td>
+                        <td><span class="xmark">✗</span></td>
+                        <td>N/A</td>
+                        <td>Sometimes</td>
+                    </tr>
+                    <tr>
+                        <td>Post-Acquisition Support</td>
+                        <td class="caprae"><span class="checkmark">✓</span></td>
+                        <td>Limited</td>
+                        <td><span class="xmark">✗</span></td>
+                        <td><span class="xmark">✗</span></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="why-caprae">
+                <h2>Why Caprae</h2>
+                <div class="why-grid">
+                    <div class="why-item">
+                        <h3>Integrated Expertise</h3>
+                        <p>Operations, strategy, and execution all in one package — no coordination headaches.</p>
+                    </div>
+                    <div class="why-item">
+                        <h3>Outcome-Driven</h3>
+                        <p>We succeed when you succeed. Our alignment ensures maximum effort and results.</p>
+                    </div>
+                    <div class="why-item">
+                        <h3>Flexible Engagement</h3>
+                        <p>Scale up or down based on your needs. No long-term contracts, no lock-in.</p>
+                    </div>
+                    <div class="why-item">
+                        <h3>AI-Powered Edge</h3>
+                        <p>Cutting-edge tools and automation deliver better results, faster, at lower cost.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h2>CAPRAE</h2>
+                    <div class="footer-tagline">Rapid Growth, Simplified</div>
+                    <div class="footer-contact">
+                        <p>Email: <a href="mailto:partners@capraecapital.com">partners@capraecapital.com</a></p>
+                        <p>Phone: <a href="tel:+18186360839">818-636-0839</a></p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Search as a Service</a></li>
+                        <li><a href="#services">Entrepreneurship as a Service</a></li>
+                        <li><a href="#services">AI-Readiness</a></li>
+                        <li><a href="#services">Tech Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#how">How It Works</a></li>
+                        <li><a href="#results">Results</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Caprae Capital Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const selectedSection = document.getElementById(tabName);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+
+            // Close mobile menu
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.remove('open');
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('open');
+        }
+
+        // Smooth scroll to contact
+        function scrollToContact() {
+            switchTab('pricing');
+            const footer = document.querySelector('footer');
+            footer.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Update active nav link
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' && e.target.onclick) {
+                const navLinks = document.querySelectorAll('.nav-links a');
+                navLinks.forEach(link => link.classList.remove('active'));
+                e.target.classList.add('active');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards and items for animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll(
+                '.service-card, .testimonial-card, .stat-card, .team-member, .timeline-item'
+            );
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
