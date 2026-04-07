@@ -18,19 +18,19 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            color: #1A1A1A;
+            color: #B0B0B0;
             line-height: 1.6;
-            background: #FFFFFF;
+            background: #0A0A0A;
         }
 
         /* Navigation */
         nav {
             position: sticky;
             top: 0;
-            background: #FFFFFF;
-            border-bottom: 1px solid #E8E8E8;
+            background: #0A0A0A;
             z-index: 1000;
-            padding: 20px 0;
+            padding: 24px 0;
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -44,67 +44,144 @@
 
         .logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #1B2A4A;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            padding: 14px 0;
         }
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 48px;
             align-items: center;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #555;
+            color: #E0E0E0;
             font-size: 14px;
             font-weight: 500;
-            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
             cursor: pointer;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #F9D360;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
-            color: #1B2A4A;
+            color: #FFFFFF;
         }
 
         .nav-links a.active {
-            color: #1B2A4A;
-            font-weight: 600;
+            color: #FFFFFF;
         }
 
         .cta-button {
-            background: #1B2A4A;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 4px;
-            text-decoration: none;
+            background: transparent;
+            color: #F9D360;
+            padding: 0;
+            border-radius: 0;
+            text-decoration: underline;
+            text-underline-offset: 4px;
             font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
             border: none;
             cursor: pointer;
         }
 
         .cta-button:hover {
-            background: #C5A55A;
-            color: white;
+            color: #FFFFFF;
         }
 
         .hamburger {
             display: none;
-            flex-direction: column;
+            width: 28px;
+            height: 22px;
+            position: relative;
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .hamburger span {
+            position: absolute;
+            left: 0;
             width: 25px;
             height: 3px;
-            background: #1B2A4A;
-            margin: 5px 0;
-            transition: 0.3s;
+            background: #E0E0E0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 9px; }
+        .hamburger span:nth-child(3) { top: 18px; }
+
+        .hamburger.active span:nth-child(1) {
+            top: 9px;
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            top: 9px;
+            transform: rotate(-45deg);
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-cta-item {
+            display: none;
         }
 
         /* Sections */
@@ -136,7 +213,7 @@
 
         /* Hero Section */
         .hero {
-            background: #FFFFFF;
+            background: #0A0A0A;
             padding: 120px 0;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -146,16 +223,17 @@
 
         .hero-content h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 56px;
-            font-weight: 700;
+            font-size: 72px;
+            font-weight: 400;
+            letter-spacing: 4px;
             line-height: 1.2;
-            color: #1B2A4A;
+            color: #FFFFFF;
             margin-bottom: 24px;
         }
 
         .hero-content p {
             font-size: 18px;
-            color: #555;
+            color: #B0B0B0;
             margin-bottom: 40px;
             line-height: 1.8;
         }
@@ -166,39 +244,40 @@
         }
 
         .button-primary {
-            background: #1B2A4A;
-            color: white;
+            background: #F9D360;
+            color: #111111;
             padding: 16px 40px;
             border-radius: 4px;
             text-decoration: none;
             font-size: 16px;
             font-weight: 600;
             transition: all 0.3s;
-            border: 2px solid #1B2A4A;
+            border: 2px solid #F9D360;
             cursor: pointer;
         }
 
         .button-primary:hover {
-            background: #C5A55A;
-            border-color: #C5A55A;
+            background: #FFFFFF;
+            border-color: #FFFFFF;
+            color: #111111;
         }
 
         .button-secondary {
             background: transparent;
-            color: #1B2A4A;
+            color: #FFFFFF;
             padding: 16px 40px;
             border-radius: 4px;
             text-decoration: none;
             font-size: 16px;
             font-weight: 600;
             transition: all 0.3s;
-            border: 2px solid #1B2A4A;
+            border: 2px solid #FFFFFF;
             cursor: pointer;
         }
 
         .button-secondary:hover {
-            background: #1B2A4A;
-            color: white;
+            background: #FFFFFF;
+            color: #111111;
         }
 
         .hero-illustration {
@@ -208,71 +287,46 @@
         }
 
         .stat-card {
-            background: #F0F4F8;
+            background: #1A1A1A;
             padding: 32px;
-            border-radius: 8px;
+            border-radius: 0;
             text-align: center;
+            border-top: 3px solid #F9D360;
         }
 
         .stat-card .number {
             font-family: 'Cormorant Garamond', serif;
             font-size: 32px;
             font-weight: 700;
-            color: #1B2A4A;
+            color: #F9D360;
             margin-bottom: 8px;
         }
 
         .stat-card .label {
             font-size: 13px;
-            color: #555;
-            font-weight: 500;
-        }
-
-        /* Stats Banner */
-        .stats-banner {
-            background: #F0F4F8;
-            padding: 60px 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            text-align: center;
-        }
-
-        .stat-item .value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            font-weight: 700;
-            color: #1B2A4A;
-            margin-bottom: 8px;
-        }
-
-        .stat-item .title {
-            font-size: 14px;
-            color: #555;
+            color: #B0B0B0;
             font-weight: 500;
         }
 
         /* Services Section */
         .services-section {
-            padding: 100px 0;
-            background: #FFFFFF;
+            padding: 120px 0;
+            background: #0A0A0A;
         }
 
         .section-heading {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
-            font-weight: 700;
-            color: #1B2A4A;
+            font-size: 56px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #FFFFFF;
             text-align: center;
             margin-bottom: 20px;
         }
 
         .section-subtitle {
             text-align: center;
-            color: #555;
+            color: #B0B0B0;
             font-size: 18px;
             margin-bottom: 80px;
             max-width: 600px;
@@ -288,40 +342,44 @@
         }
 
         .service-card {
-            background: #FAFAFA;
+            background: #1A1A1A;
             padding: 48px 32px;
-            border-radius: 8px;
+            border-radius: 0;
             transition: all 0.3s;
-            border: 1px solid #E8E8E8;
+            border: 1px solid #2A2A2A;
+            border-top: 3px solid #F9D360;
         }
 
         .service-card:hover {
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 40px rgba(249, 211, 96, 0.06);
             transform: translateY(-5px);
         }
 
         .service-icon {
             width: 50px;
             height: 50px;
-            background: #1B2A4A;
+            background: #252525;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #C5A55A;
-            font-size: 24px;
             margin-bottom: 20px;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
         }
 
         .service-card h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
-            color: #1B2A4A;
+            color: #FFFFFF;
             margin-bottom: 16px;
         }
 
         .service-card p {
-            color: #555;
+            color: #B0B0B0;
             font-size: 15px;
             line-height: 1.8;
             margin-bottom: 20px;
@@ -332,10 +390,10 @@
         }
 
         .service-features li {
-            color: #555;
+            color: #B0B0B0;
             font-size: 14px;
             padding: 8px 0;
-            border-bottom: 1px solid #E8E8E8;
+            border-bottom: 1px solid #2A2A2A;
         }
 
         .service-features li:last-child {
@@ -343,7 +401,7 @@
         }
 
         .service-price {
-            color: #1B2A4A;
+            color: #F9D360;
             font-weight: 600;
             margin-top: 20px;
             font-size: 16px;
@@ -351,9 +409,9 @@
 
         /* Who We Serve */
         .who-serve {
-            background: #F0F4F8;
-            padding: 80px 0;
-            margin-top: 100px;
+            background: #141414;
+            padding: 120px 0;
+            margin-top: 120px;
         }
 
         .serve-grid {
@@ -364,53 +422,59 @@
         }
 
         .serve-card {
-            background: white;
+            background: #1A1A1A;
             padding: 40px;
-            border-radius: 8px;
+            border-radius: 0;
             text-align: center;
-            border: 1px solid #E8E8E8;
+            border: 1px solid #2A2A2A;
+            border-top: 3px solid #F9D360;
         }
 
         .serve-icon {
             width: 60px;
             height: 60px;
-            background: #1B2A4A;
+            background: #F9D360;
             border-radius: 50%;
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #C5A55A;
-            font-size: 28px;
+        }
+
+        .serve-icon svg {
+            width: 28px;
+            height: 28px;
         }
 
         .serve-card h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 22px;
-            color: #1B2A4A;
+            color: #FFFFFF;
             margin-bottom: 12px;
         }
 
         .serve-card p {
-            color: #555;
+            color: #B0B0B0;
             font-size: 15px;
         }
 
         /* Team Section */
         .team-section {
-            background: #FFFFFF;
-            padding: 100px 0;
+            background: #0A0A0A;
+            padding: 120px 0;
         }
 
         .team-heading {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            color: #1B2A4A;
+            font-size: 56px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #FFFFFF;
             margin-bottom: 10px;
         }
 
         .team-subheading {
-            color: #555;
+            color: #B0B0B0;
             margin-bottom: 60px;
             font-size: 16px;
         }
@@ -427,34 +491,35 @@
         }
 
         .member-photo {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #1B2A4A 0%, #C5A55A 100%);
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
+            object-fit: cover;
+            object-position: center 20%;
             margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
+            display: block;
+            border: 2px solid #F9D360;
         }
 
         .team-member h4 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 18px;
-            color: #1B2A4A;
+            color: #FFFFFF;
             margin-bottom: 4px;
         }
 
         .team-member p {
-            color: #555;
-            font-size: 14px;
+            color: #F9D360;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         /* How It Works */
         .how-section {
-            background: #F0F4F8;
-            padding: 100px 0;
+            background: #141414;
+            padding: 120px 0;
         }
 
         .timeline {
@@ -475,7 +540,7 @@
             position: absolute;
             width: 2px;
             height: 40px;
-            background: #C5A55A;
+            background: #F9D360;
             top: -50px;
             left: 50%;
             transform: translateX(-50%);
@@ -488,8 +553,8 @@
         .timeline-number {
             width: 50px;
             height: 50px;
-            background: #1B2A4A;
-            color: #C5A55A;
+            background: #F9D360;
+            color: #111111;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -502,27 +567,27 @@
         .timeline-item h4 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 16px;
-            color: #1B2A4A;
+            color: #FFFFFF;
             margin-bottom: 8px;
         }
 
         .timeline-item p {
-            color: #555;
+            color: #B0B0B0;
             font-size: 13px;
         }
 
         /* Engagement Timeline */
         .engagement-timeline {
-            background: white;
+            background: #1A1A1A;
             padding: 40px;
-            border-radius: 8px;
+            border-radius: 0;
             margin-bottom: 80px;
         }
 
         .engagement-timeline h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
-            color: #1B2A4A;
+            color: #FFFFFF;
             margin-bottom: 30px;
         }
 
@@ -533,30 +598,30 @@
         }
 
         .engagement-item {
-            background: #F0F4F8;
+            background: #252525;
             padding: 20px;
-            border-radius: 6px;
+            border-radius: 0;
             text-align: center;
-            border-left: 4px solid #C5A55A;
+            border-left: 4px solid #F9D360;
         }
 
         .engagement-item p {
             font-size: 14px;
-            color: #555;
+            color: #B0B0B0;
             font-weight: 500;
         }
 
         /* Beyond Sourcing */
         .beyond-sourcing {
-            background: white;
+            background: #1A1A1A;
             padding: 40px;
-            border-radius: 8px;
+            border-radius: 0;
         }
 
         .beyond-sourcing h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
-            color: #1B2A4A;
+            color: #FFFFFF;
             margin-bottom: 30px;
         }
 
@@ -568,24 +633,24 @@
 
         .beyond-item {
             padding: 15px 0;
-            border-bottom: 1px solid #E8E8E8;
-            color: #555;
+            border-bottom: 1px solid #2A2A2A;
+            color: #B0B0B0;
             font-size: 15px;
             display: flex;
             align-items: center;
         }
 
         .beyond-item::before {
-            content: '→';
-            color: #C5A55A;
+            content: '\2192';
+            color: #F9D360;
             margin-right: 12px;
             font-weight: bold;
         }
 
         /* Results Section */
         .results-section {
-            background: #FFFFFF;
-            padding: 100px 0;
+            background: #0A0A0A;
+            padding: 120px 0;
         }
 
         .metrics-grid {
@@ -598,20 +663,21 @@
 
         .metric-item {
             padding: 40px;
-            background: #F0F4F8;
-            border-radius: 8px;
+            background: #1A1A1A;
+            border-radius: 0;
+            border-top: 3px solid #F9D360;
         }
 
         .metric-item .value {
             font-family: 'Cormorant Garamond', serif;
             font-size: 40px;
             font-weight: 700;
-            color: #1B2A4A;
+            color: #F9D360;
             margin-bottom: 12px;
         }
 
         .metric-item .label {
-            color: #555;
+            color: #B0B0B0;
             font-size: 15px;
             font-weight: 500;
         }
@@ -623,27 +689,29 @@
 
         .testimonials-section h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            color: #1B2A4A;
+            font-size: 56px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #FFFFFF;
             margin-bottom: 60px;
             text-align: center;
         }
 
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 40px;
         }
 
         .testimonial-card {
-            background: white;
+            background: #1A1A1A;
             padding: 40px;
-            border-radius: 8px;
-            border-left: 4px solid #C5A55A;
+            border-radius: 0;
+            border-left: 4px solid #F9D360;
         }
 
         .testimonial-quote {
-            color: #1B2A4A;
+            color: #E0E0E0;
             font-size: 16px;
             font-style: italic;
             margin-bottom: 24px;
@@ -651,30 +719,31 @@
         }
 
         .testimonial-author {
-            color: #1B2A4A;
+            color: #FFFFFF;
             font-weight: 600;
             font-size: 15px;
             margin-bottom: 4px;
         }
 
         .testimonial-title {
-            color: #555;
+            color: #B0B0B0;
             font-size: 14px;
         }
 
         /* Tech Stack */
         .tech-stack-section {
-            background: #F0F4F8;
+            background: #1A1A1A;
             padding: 60px 40px;
-            border-radius: 8px;
+            border-radius: 0;
             text-align: center;
             margin-bottom: 100px;
+            border-top: 3px solid #F9D360;
         }
 
         .tech-stack-section h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
-            color: #1B2A4A;
+            color: #FFFFFF;
             margin-bottom: 30px;
         }
 
@@ -687,24 +756,24 @@
         }
 
         .tech-tool {
-            background: white;
+            background: #252525;
             padding: 12px 20px;
-            border-radius: 6px;
-            color: #555;
+            border-radius: 0;
+            color: #B0B0B0;
             font-size: 14px;
-            border: 1px solid #E8E8E8;
+            border: 1px solid #2A2A2A;
         }
 
         .tech-value {
-            color: #1B2A4A;
+            color: #F9D360;
             font-weight: 600;
             font-size: 16px;
         }
 
         /* Pricing Section */
         .pricing-section {
-            background: #FFFFFF;
-            padding: 100px 0;
+            background: #0A0A0A;
+            padding: 120px 0;
         }
 
         .pricing-grid {
@@ -715,21 +784,22 @@
         }
 
         .pricing-card {
-            background: #FAFAFA;
+            background: #1A1A1A;
             padding: 50px 40px;
-            border-radius: 8px;
-            border: 1px solid #E8E8E8;
+            border-radius: 0;
+            border: 1px solid #2A2A2A;
+            border-top: 3px solid #F9D360;
             position: relative;
             transition: all 0.3s;
         }
 
         .pricing-card:hover {
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 60px rgba(249, 211, 96, 0.08);
         }
 
         .pricing-card.featured {
-            background: white;
-            border: 2px solid #C5A55A;
+            background: #1A1A1A;
+            border: 2px solid #F9D360;
             transform: scale(1.05);
         }
 
@@ -739,8 +809,8 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: #C5A55A;
-            color: white;
+            background: #F9D360;
+            color: #111111;
             padding: 6px 20px;
             border-radius: 20px;
             font-size: 12px;
@@ -751,31 +821,31 @@
         .pricing-name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 28px;
-            color: #1B2A4A;
+            color: #FFFFFF;
             margin-bottom: 16px;
             font-weight: 700;
         }
 
         .pricing-price {
             font-size: 32px;
-            color: #1B2A4A;
+            color: #F9D360;
             font-weight: 700;
             margin-bottom: 8px;
         }
 
         .pricing-price-note {
-            color: #555;
+            color: #B0B0B0;
             font-size: 14px;
             margin-bottom: 30px;
         }
 
         .pricing-hours {
-            color: #1B2A4A;
+            color: #E0E0E0;
             font-weight: 600;
             font-size: 15px;
             margin-bottom: 30px;
             padding-bottom: 30px;
-            border-bottom: 1px solid #E8E8E8;
+            border-bottom: 1px solid #2A2A2A;
         }
 
         .pricing-features {
@@ -784,15 +854,15 @@
         }
 
         .pricing-features li {
-            color: #555;
+            color: #B0B0B0;
             font-size: 15px;
             padding: 12px 0;
-            border-bottom: 1px solid #E8E8E8;
+            border-bottom: 1px solid #2A2A2A;
         }
 
         .pricing-features li::before {
-            content: '✓ ';
-            color: #C5A55A;
+            content: '\2713 ';
+            color: #F9D360;
             font-weight: bold;
             margin-right: 8px;
         }
@@ -804,10 +874,10 @@
         .pricing-cta {
             width: 100%;
             padding: 16px;
-            background: #1B2A4A;
-            color: white;
+            background: #F9D360;
+            color: #111111;
             border: none;
-            border-radius: 4px;
+            border-radius: 0;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
@@ -815,7 +885,8 @@
         }
 
         .pricing-cta:hover {
-            background: #C5A55A;
+            background: #FFFFFF;
+            color: #111111;
         }
 
         /* Comparison Table */
@@ -825,8 +896,10 @@
 
         .comparison-section h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            color: #1B2A4A;
+            font-size: 56px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #FFFFFF;
             margin-bottom: 50px;
             text-align: center;
         }
@@ -834,56 +907,56 @@
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
-            border: 1px solid #E8E8E8;
-            border-radius: 8px;
+            background: #1A1A1A;
+            border: 1px solid #2A2A2A;
+            border-radius: 0;
             overflow: hidden;
         }
 
         .comparison-table th {
-            background: #F0F4F8;
-            color: #1B2A4A;
+            background: #252525;
+            color: #FFFFFF;
             padding: 20px;
             text-align: left;
             font-weight: 600;
-            border-right: 1px solid #E8E8E8;
+            border-right: 1px solid #2A2A2A;
         }
 
         .comparison-table th:first-child {
-            background: #FAFAFA;
+            background: #1A1A1A;
         }
 
         .comparison-table td {
             padding: 20px;
-            border-right: 1px solid #E8E8E8;
-            color: #555;
+            border-right: 1px solid #2A2A2A;
+            color: #B0B0B0;
             font-size: 15px;
         }
 
         .comparison-table tr:not(:last-child) td {
-            border-bottom: 1px solid #E8E8E8;
+            border-bottom: 1px solid #2A2A2A;
         }
 
         .comparison-table .caprae {
-            background: #FFFBF0;
+            background: #1E1A0E;
             font-weight: 600;
-            color: #1B2A4A;
+            color: #FFFFFF;
         }
 
         .comparison-table .caprae-header {
-            background: #C5A55A;
-            color: white;
+            background: #F9D360;
+            color: #111111;
             font-weight: 700;
         }
 
         .checkmark {
-            color: #C5A55A;
+            color: #F9D360;
             font-weight: bold;
             font-size: 18px;
         }
 
         .xmark {
-            color: #999;
+            color: #555;
         }
 
         /* Why Caprae */
@@ -893,8 +966,10 @@
 
         .why-caprae h2 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            color: #1B2A4A;
+            font-size: 56px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #FFFFFF;
             margin-bottom: 50px;
             text-align: center;
         }
@@ -906,29 +981,33 @@
         }
 
         .why-item {
-            background: linear-gradient(135deg, #1B2A4A 0%, rgba(27, 42, 74, 0.8) 100%);
+            background: #1A1A1A;
             color: white;
             padding: 40px;
-            border-radius: 8px;
+            border-radius: 0;
             text-align: center;
+            border-top: 3px solid #F9D360;
         }
 
         .why-item h3 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 20px;
             margin-bottom: 16px;
+            color: #F9D360;
         }
 
         .why-item p {
             font-size: 15px;
             line-height: 1.6;
+            color: #B0B0B0;
         }
 
         /* Footer */
         footer {
-            background: #1B2A4A;
+            background: #0A0A0A;
             color: white;
             padding: 60px 0;
+            border-top: 1px solid #2A2A2A;
         }
 
         .footer-content {
@@ -938,15 +1017,32 @@
             margin-bottom: 60px;
         }
 
-        .footer-brand h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            letter-spacing: 2px;
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-brand-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-bottom: 12px;
         }
 
+        .footer-brand-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            letter-spacing: 2px;
+        }
+
+        .footer-logo-img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
         .footer-tagline {
-            color: #C5A55A;
+            color: #F9D360;
             font-size: 16px;
             margin-bottom: 30px;
             font-weight: 500;
@@ -958,13 +1054,30 @@
         }
 
         .footer-contact a {
-            color: #C5A55A;
+            color: #F9D360;
             text-decoration: none;
             transition: color 0.3s;
         }
 
         .footer-contact a:hover {
             color: white;
+        }
+
+        .footer-social-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-social-links a {
+            color: #B0B0B0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-social-links a:hover {
+            color: #F9D360;
         }
 
         .footer-section h4 {
@@ -989,7 +1102,7 @@
         }
 
         .footer-section ul li a:hover {
-            color: #C5A55A;
+            color: #F9D360;
         }
 
         .footer-bottom {
@@ -1000,30 +1113,140 @@
             font-size: 14px;
         }
 
+        /* HERO ENTRANCE ANIMATIONS */
+        .hero-enter {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: heroReveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--hero-d, 0s) forwards;
+        }
+
+        @keyframes heroReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* SCROLL REVEAL ANIMATIONS */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .fade-in-element.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .fade-in-element.slide-left {
+            transform: translateX(-60px);
+        }
+
+        .fade-in-element.slide-right {
+            transform: translateX(60px);
+        }
+
+        .fade-in-element.scale-up {
+            transform: scale(0.92);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .hero-enter {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .fade-in-element {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
+            body.menu-open {
+                overflow: hidden;
+            }
+
             .hamburger {
                 display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .desktop-cta {
+                display: none;
             }
 
             .nav-links {
                 position: absolute;
-                top: 70px;
+                top: 100%;
                 left: 0;
                 right: 0;
-                background: white;
+                background: #1A1A1A;
                 flex-direction: column;
-                gap: 20px;
-                padding: 20px;
-                border-bottom: 1px solid #E8E8E8;
+                gap: 0;
+                padding: 0 20px;
+                border-bottom: 1px solid #2A2A2A;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
                 max-height: 0;
                 overflow: hidden;
-                transition: max-height 0.3s;
-                align-items: flex-start;
+                transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                            padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                align-items: stretch;
             }
 
             .nav-links.open {
-                max-height: 300px;
+                max-height: 450px;
+                padding: 8px 20px 20px;
+            }
+
+            .nav-links li {
+                border-bottom: 1px solid #2A2A2A;
+            }
+
+            .nav-links li:last-child,
+            .nav-links li.mobile-cta-item {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 16px 0;
+                font-size: 16px;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .mobile-cta-item {
+                display: block;
+                padding-top: 8px;
+            }
+
+            .mobile-cta-item a {
+                display: block;
+                color: #111111;
+                background: #F9D360;
+                text-align: center;
+                padding: 14px 0;
+                border-radius: 4px;
+                font-size: 15px;
+                font-weight: 600;
+                transition: background 0.3s, color 0.3s;
+            }
+
+            .mobile-cta-item a:hover {
+                background: #FFFFFF;
+                color: #111111;
             }
 
             .nav-container {
@@ -1036,7 +1259,7 @@
             }
 
             .hero-content h1 {
-                font-size: 36px;
+                font-size: 48px;
             }
 
             .hero-illustration {
@@ -1086,6 +1309,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .testimonial-quote {
+                font-size: 14px;
+            }
+
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
@@ -1105,6 +1332,7 @@
 
             .section-heading {
                 font-size: 36px;
+                letter-spacing: 1px;
             }
 
             .hero-content p {
@@ -1132,6 +1360,7 @@
 
             .section-heading {
                 font-size: 28px;
+                letter-spacing: 0;
             }
 
             .stats-grid {
@@ -1167,15 +1396,19 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">CAPRAE</div>
+            <a href="#" class="logo">
+                <img src="../assets/logo/caprae-logo.png" alt="Caprae Capital" class="logo-img">
+                CAPRAE CAPITAL
+            </a>
             <ul class="nav-links">
-                <li><a onclick="switchTab('home')">Home</a></li>
-                <li><a onclick="switchTab('services')">Services</a></li>
-                <li><a onclick="switchTab('how')">How It Works</a></li>
-                <li><a onclick="switchTab('results')">Results</a></li>
-                <li><a onclick="switchTab('pricing')">Pricing</a></li>
+                <li><a href="#" onclick="switchTab('home'); return false;">Home</a></li>
+                <li><a href="#" onclick="switchTab('services'); return false;">Services</a></li>
+                <li><a href="#" onclick="switchTab('how'); return false;">How It Works</a></li>
+                <li><a href="#" onclick="switchTab('results'); return false;">Results</a></li>
+                <li><a href="#" onclick="switchTab('pricing'); return false;">Pricing</a></li>
+                <li class="mobile-cta-item"><a href="mailto:partners@capraecapital.com">Contact Us →</a></li>
             </ul>
-            <button class="cta-button" onclick="scrollToContact()">Contact Us</button>
+            <a href="mailto:partners@capraecapital.com" class="cta-button desktop-cta">Contact Us</a>
             <div class="hamburger" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
@@ -1183,59 +1416,36 @@
             </div>
         </div>
     </nav>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <!-- HOME SECTION -->
     <section id="home" class="active">
         <div class="container">
             <div class="hero">
                 <div class="hero-content">
-                    <h1>End-to-End Private Equity Services, A to Z</h1>
-                    <p>Completely white-labeled. Fully outsourced. Results-driven. At 30-60% less than traditional providers.</p>
-                    <div class="hero-buttons">
+                    <h1 class="hero-enter" style="--hero-d: 0s;">End-to-End Private Equity Services, A to Z</h1>
+                    <p class="hero-enter" style="--hero-d: 0.15s;">Completely white-labeled. Fully outsourced. Results-driven. At 30-60% less than traditional providers.</p>
+                    <div class="hero-buttons hero-enter" style="--hero-d: 0.3s;">
                         <button class="button-primary" onclick="switchTab('services')">Explore Services</button>
                         <button class="button-secondary" onclick="switchTab('pricing')">View Pricing</button>
                     </div>
                 </div>
                 <div class="hero-illustration">
-                    <div class="stat-card">
+                    <div class="stat-card fade-in-element scale-up">
                         <div class="number">$110M+</div>
                         <div class="label">Deals Closed</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in-element scale-up">
                         <div class="number">70</div>
                         <div class="label">Hours/Month</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in-element scale-up">
                         <div class="number">$50K+</div>
                         <div class="label">Annual Savings</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card fade-in-element scale-up">
                         <div class="number">5-10</div>
                         <div class="label">Meetings/Month</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Stats Banner -->
-        <div class="stats-banner">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="value">$110M+</div>
-                        <div class="title">Deals Closed (2026 YTD)</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="value">70</div>
-                        <div class="title">Hours/Month Dedicated</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="value">$50K+</div>
-                        <div class="title">Annual Tech Savings</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="value">5-10</div>
-                        <div class="title">Meetings/Month Secured</div>
                     </div>
                 </div>
             </div>
@@ -1244,20 +1454,26 @@
         <!-- Who We Serve -->
         <div class="who-serve">
             <div class="container">
-                <h2 class="section-heading">Who We Serve</h2>
+                <h2 class="section-heading fade-in-element slide-left">Who We Serve</h2>
                 <div class="serve-grid">
-                    <div class="serve-card">
-                        <div class="serve-icon">🏯</div>
+                    <div class="serve-card fade-in-element">
+                        <div class="serve-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
                         <h3>Searchers & Acquisition Teams</h3>
                         <p>Scale your deal pipeline with professional sourcing, outreach, and due diligence support.</p>
                     </div>
-                    <div class="serve-card">
-                        <div class="serve-icon">🚀</div>
+                    <div class="serve-card fade-in-element">
+                        <div class="serve-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
                         <h3>Entrepreneurs</h3>
                         <p>Grow your business with fractional operations, marketing, and strategic advising.</p>
                     </div>
-                    <div class="serve-card">
-                        <div class="serve-icon">💼</div>
+                    <div class="serve-card fade-in-element">
+                        <div class="serve-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                        </div>
                         <h3>PE & Investment Banks</h3>
                         <p>Supplement your team with dedicated resources for sourcing, diligence, and execution.</p>
                     </div>
@@ -1268,28 +1484,28 @@
         <!-- Team Section -->
         <div class="team-section">
             <div class="container">
-                <h2 class="team-heading">Led By Operators Who've Been In Your Shoes</h2>
-                <p class="team-subheading">Deep expertise across PE, startups, and transaction management</p>
+                <h2 class="team-heading fade-in-element slide-left">Led By Operators Who've Been In Your Shoes</h2>
+                <p class="team-subheading fade-in-element">Deep expertise across PE, startups, and transaction management</p>
                 <div class="team-grid">
-                    <div class="team-member">
-                        <div class="member-photo">KH</div>
+                    <div class="team-member fade-in-element">
+                        <img src="../assets/team/kevin-hong.jpg" alt="Kevin Hong" class="member-photo">
                         <h4>Kevin Hong</h4>
-                        <p>Co-Founder & CEO</p>
+                        <p>Founder</p>
                     </div>
-                    <div class="team-member">
-                        <div class="member-photo">HJ</div>
+                    <div class="team-member fade-in-element">
+                        <img src="../assets/team/hereford-johnson.jpg" alt="Hereford Johnson" class="member-photo">
                         <h4>Hereford Johnson</h4>
-                        <p>Chief Operations</p>
+                        <p>Senior Adviser</p>
                     </div>
-                    <div class="team-member">
-                        <div class="member-photo">ZB</div>
+                    <div class="team-member fade-in-element">
+                        <img src="../assets/team/zackary-beckham.jpg" alt="Zackary Beckham" class="member-photo">
                         <h4>Zackary Beckham</h4>
-                        <p>Head of Growth</p>
+                        <p>Founder</p>
                     </div>
-                    <div class="team-member">
-                        <div class="member-photo">JB</div>
+                    <div class="team-member fade-in-element">
+                        <img src="../assets/team/jeff-blacklock.png" alt="Jeff Blacklock" class="member-photo">
                         <h4>Jeff Blacklock</h4>
-                        <p>VP of Advisory</p>
+                        <p>Deal Adviser</p>
                     </div>
                 </div>
             </div>
@@ -1299,12 +1515,14 @@
     <!-- SERVICES SECTION -->
     <section id="services">
         <div class="container services-section">
-            <h2 class="section-heading">Comprehensive Services for Every Stage</h2>
-            <p class="section-subtitle">End-to-end coverage from deal sourcing to post-acquisition growth</p>
+            <h2 class="section-heading fade-in-element slide-left">Comprehensive Services for Every Stage</h2>
+            <p class="section-subtitle fade-in-element slide-right">End-to-end coverage from deal sourcing to post-acquisition growth</p>
 
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
+                <div class="service-card fade-in-element">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#F9D360" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
                     <h3>Search as a Service</h3>
                     <p>Our flagship offering: Complete deal sourcing tailored to your criteria.</p>
                     <ul class="service-features">
@@ -1319,8 +1537,10 @@
                     <div class="service-price">Starting at $1,250/mo + 2% success fee</div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon">💡</div>
+                <div class="service-card fade-in-element">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#F9D360" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    </div>
                     <h3>Entrepreneurship as a Service</h3>
                     <p>Fractional operations for growth-stage entrepreneurs and founders.</p>
                     <ul class="service-features">
@@ -1332,11 +1552,13 @@
                         <li>Press releases & PR</li>
                         <li>Marketing optimization</li>
                     </ul>
-                    <div class="service-price">$1,000/mo • 40 hrs/month</div>
+                    <div class="service-price">$1,000/mo &bull; 40 hrs/month</div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
+                <div class="service-card fade-in-element">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#F9D360" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                    </div>
                     <h3>AI-Readiness as a Service</h3>
                     <p>Prepare your business for the AI era with comprehensive tech strategy.</p>
                     <ul class="service-features">
@@ -1350,8 +1572,10 @@
                     <div class="service-price">Custom pricing</div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon">💻</div>
+                <div class="service-card fade-in-element">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#F9D360" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
                     <h3>Tech Development</h3>
                     <p>From MVP to full-stack platforms, built with modern frameworks.</p>
                     <ul class="service-features">
@@ -1365,8 +1589,10 @@
                     <div class="service-price">Project-based</div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon">📈</div>
+                <div class="service-card fade-in-element">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#F9D360" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                    </div>
                     <h3>Post-Acquisition Strategy</h3>
                     <p>Scale acquired businesses with hands-on growth programs and advisory.</p>
                     <ul class="service-features">
@@ -1385,49 +1611,50 @@
 
     <!-- HOW IT WORKS SECTION -->
     <section id="how">
-        <div class="container how-section">
-            <h2 class="section-heading">A Proven Process</h2>
-            <p class="section-subtitle">Seven-step methodology refined through hundreds of deals</p>
+        <div class="how-section">
+        <div class="container">
+            <h2 class="section-heading fade-in-element slide-left">A Proven Process</h2>
+            <p class="section-subtitle fade-in-element slide-right">Seven-step methodology refined through hundreds of deals</p>
 
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-item fade-in-element">
                     <div class="timeline-number">1</div>
                     <h4>Define</h4>
                     <p>You share industry criteria</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item fade-in-element">
                     <div class="timeline-number">2</div>
                     <h4>Source</h4>
                     <p>We find off-market deals</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item fade-in-element">
                     <div class="timeline-number">3</div>
                     <h4>Review</h4>
                     <p>Our team reviews prospects</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item fade-in-element">
                     <div class="timeline-number">4</div>
                     <h4>Present</h4>
                     <p>Curated deals weekly</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item fade-in-element">
                     <div class="timeline-number">5</div>
                     <h4>Refine</h4>
                     <p>Adjust criteria & approve</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item fade-in-element">
                     <div class="timeline-number">6</div>
                     <h4>Outreach</h4>
                     <p>Multi-channel campaigns</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item fade-in-element">
                     <div class="timeline-number">7</div>
                     <h4>Connect</h4>
                     <p>You join exploratory calls</p>
                 </div>
             </div>
 
-            <div class="engagement-timeline">
+            <div class="engagement-timeline fade-in-element">
                 <h3>Engagement Timeline</h3>
                 <div class="engagement-items">
                     <div class="engagement-item">
@@ -1451,7 +1678,7 @@
                 </div>
             </div>
 
-            <div class="beyond-sourcing">
+            <div class="beyond-sourcing fade-in-element">
                 <h3>Beyond Deal Sourcing</h3>
                 <div class="beyond-list">
                     <div class="beyond-item">Deal Structuring</div>
@@ -1463,54 +1690,60 @@
                 </div>
             </div>
         </div>
+        </div>
     </section>
 
     <!-- RESULTS SECTION -->
     <section id="results">
         <div class="container results-section">
             <div class="metrics-grid">
-                <div class="metric-item">
+                <div class="metric-item fade-in-element">
                     <div class="value">$110M+</div>
                     <div class="label">Total Deals Closed (2026 YTD)</div>
                 </div>
-                <div class="metric-item">
+                <div class="metric-item fade-in-element">
                     <div class="value">$50M+</div>
                     <div class="label">Sourced & DD'd (2025)</div>
                 </div>
-                <div class="metric-item">
+                <div class="metric-item fade-in-element">
                     <div class="value">5-10</div>
                     <div class="label">Meetings/Month Average</div>
                 </div>
-                <div class="metric-item">
+                <div class="metric-item fade-in-element">
                     <div class="value">$50K+</div>
                     <div class="label">Annual Tech Savings</div>
                 </div>
             </div>
 
             <div class="testimonials-section">
-                <h2>Client Testimonials</h2>
+                <h2 class="fade-in-element">Client Testimonials</h2>
                 <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote">"Caprae secured advanced meetings within just 2 months. The team's professionalism and dedication transformed our sourcing pipeline."</div>
+                    <div class="testimonial-card fade-in-element">
+                        <div class="testimonial-quote">"Within two months of launching the program, Caprae had already secured two advanced meetings in Houston and opened doors I didn't think were reachable this early. Their experience showed up not only in the quality of the leads but in the strategic guidance around how to approach founders and structure the conversations. I was so impressed with the early traction that I actually expanded the scope of our project to include sales and marketing for our core team. It's rare to find a partner that delivers both execution and judgment at this level."</div>
                         <div class="testimonial-author">Jeff Blacklock</div>
                         <div class="testimonial-title">Valwell Technologies</div>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote">"We closed a $20M+ deal in 6 months with Caprae's comprehensive support. Their post-acquisition guidance was invaluable."</div>
+                    <div class="testimonial-card fade-in-element">
+                        <div class="testimonial-quote">"We were one of Caprae's first three customers, and the team supported us end-to-end - branding, marketing, website ideation, lead generation, cold calling, email campaigns, and outbound strategy. Within six months, we closed our first acquisition, a $20M+ deal. That transaction naturally led to a partnership with a family office and allowed us to expand our sponsorship model. Caprae saved us a significant amount of time and money and played a critical role in helping us break into the private equity space."</div>
                         <div class="testimonial-author">Steve Schepman</div>
                         <div class="testimonial-title">Gondor Capital</div>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-quote">"I consistently receive 5-10 qualified meetings monthly. Caprae has become an essential part of our search strategy."</div>
-                        <div class="testimonial-author">Top 10 MBA Graduate</div>
-                        <div class="testimonial-title">Independent Searcher</div>
+                    <div class="testimonial-card fade-in-element">
+                        <div class="testimonial-quote">"Over several months, Kevin and his team consistently generated 5-10 quality meetings per month and a large volume of qualified leads, saving me significant time and money. Once a deal moved under LOI, Caprae supported diligence around NDR, churn, customer concentration, and other areas, which increased my confidence in progressing toward close. Kevin also brings a candid, experience-driven perspective on the search process that I found valuable."</div>
+                        <div class="testimonial-author">Traditional Searcher</div>
+                        <div class="testimonial-title">Kellogg School of Management</div>
+                    </div>
+                    <div class="testimonial-card fade-in-element">
+                        <div class="testimonial-quote">"Once the system was in place, we consistently secured 5-10 meetings and seller engagements each month with owners we wouldn't have reached otherwise. Their cold call team is a standout - reliably connecting with business owners who rarely respond to email outreach. When we moved into LOI, Caprae's team became an extension of ours in due diligence. What really stood out was the diligence horsepower: the Caprae team brought a level of thoroughness and perspective that proved invaluable throughout the journey."</div>
+                        <div class="testimonial-author">Traditional Searcher</div>
+                        <div class="testimonial-title">Top 10 MBA Graduate, UC Berkeley</div>
                     </div>
                 </div>
             </div>
 
-            <div class="tech-stack-section">
+            <div class="tech-stack-section fade-in-element">
                 <h3>Included Tech Stack</h3>
-                <p style="color: #555; margin-bottom: 20px; font-size: 15px;">Professional tools included at no extra cost — estimated $8,500/month value</p>
+                <p style="color: #B0B0B0; margin-bottom: 20px; font-size: 15px;">Professional tools included at no extra cost - estimated $8,500/month value</p>
                 <div class="tech-tools">
                     <div class="tech-tool">Apollo.io</div>
                     <div class="tech-tool">S&P Capital IQ</div>
@@ -1520,7 +1753,7 @@
                     <div class="tech-tool">SourceScrub</div>
                     <div class="tech-tool">Cohesive</div>
                 </div>
-                <div class="tech-value">Estimated value: $8,500/month — Included free with your membership</div>
+                <div class="tech-value">Estimated value: $8,500/month - Included free with your membership</div>
             </div>
         </div>
     </section>
@@ -1528,11 +1761,11 @@
     <!-- PRICING SECTION -->
     <section id="pricing">
         <div class="container pricing-section">
-            <h2 class="section-heading">Transparent, Value-Driven Pricing</h2>
-            <p class="section-subtitle">30-60% less than traditional providers</p>
+            <h2 class="section-heading fade-in-element slide-left">Transparent, Value-Driven Pricing</h2>
+            <p class="section-subtitle fade-in-element slide-right">30-60% less than traditional providers</p>
 
             <div class="pricing-grid">
-                <div class="pricing-card">
+                <div class="pricing-card fade-in-element">
                     <div class="pricing-name">Search as a Service</div>
                     <div class="pricing-price">$1,250</div>
                     <div class="pricing-price-note">/month + 2% success fee</div>
@@ -1551,10 +1784,10 @@
                         <li>Team of associates</li>
                         <li>Cold call analytics</li>
                     </ul>
-                    <button class="pricing-cta">Get Started</button>
+                    <a href="mailto:partners@capraecapital.com" class="pricing-cta" style="display:block;text-align:center;text-decoration:none;">Get Started</a>
                 </div>
 
-                <div class="pricing-card featured">
+                <div class="pricing-card featured fade-in-element">
                     <div class="pricing-name">Entrepreneurship as a Service</div>
                     <div class="pricing-price">$1,000</div>
                     <div class="pricing-price-note">/month</div>
@@ -1569,10 +1802,10 @@
                         <li>Software development</li>
                         <li>Press releases & PR</li>
                     </ul>
-                    <button class="pricing-cta">Get Started</button>
+                    <a href="mailto:partners@capraecapital.com" class="pricing-cta" style="display:block;text-align:center;text-decoration:none;">Get Started</a>
                 </div>
 
-                <div class="pricing-card">
+                <div class="pricing-card fade-in-element">
                     <div class="pricing-name">Custom / Enterprise</div>
                     <div class="pricing-price">Let's Talk</div>
                     <div class="pricing-price-note">Contact for pricing</div>
@@ -1587,11 +1820,11 @@
                         <li>Strategic advisory</li>
                         <li>Post-acq support</li>
                     </ul>
-                    <button class="pricing-cta">Contact Us</button>
+                    <a href="mailto:partners@capraecapital.com" class="pricing-cta" style="display:block;text-align:center;text-decoration:none;">Contact Us</a>
                 </div>
             </div>
 
-            <div class="comparison-section">
+            <div class="comparison-section fade-in-element">
                 <h2>How Caprae Compares</h2>
                 <table class="comparison-table">
                     <tr>
@@ -1603,31 +1836,31 @@
                     </tr>
                     <tr>
                         <td>Monthly Cost</td>
-                        <td class="caprae"><span class="checkmark">✓</span> $1,250</td>
+                        <td class="caprae"><span class="checkmark">&check;</span> $1,250</td>
                         <td>$3,000-5,000+</td>
                         <td>$15,000+</td>
                         <td>$2,000-4,000</td>
                     </tr>
                     <tr>
                         <td>Tech Stack Included</td>
-                        <td class="caprae"><span class="checkmark">✓</span> ($50K+ value)</td>
-                        <td><span class="xmark">✗</span></td>
-                        <td><span class="xmark">✗</span></td>
-                        <td><span class="xmark">✗</span></td>
+                        <td class="caprae"><span class="checkmark">&check;</span> ($50K+ value)</td>
+                        <td><span class="xmark">&cross;</span></td>
+                        <td><span class="xmark">&cross;</span></td>
+                        <td><span class="xmark">&cross;</span></td>
                     </tr>
                     <tr>
                         <td>Dedicated Team</td>
-                        <td class="caprae"><span class="checkmark">✓</span> (70hrs/mo)</td>
+                        <td class="caprae"><span class="checkmark">&check;</span> (70hrs/mo)</td>
                         <td>Limited</td>
-                        <td><span class="checkmark">✓</span></td>
+                        <td><span class="checkmark">&check;</span></td>
                         <td>Variable</td>
                     </tr>
                     <tr>
                         <td>Deal Advisory</td>
-                        <td class="caprae"><span class="checkmark">✓</span></td>
-                        <td><span class="checkmark">✓</span></td>
-                        <td><span class="xmark">✗</span></td>
-                        <td><span class="xmark">✗</span></td>
+                        <td class="caprae"><span class="checkmark">&check;</span></td>
+                        <td><span class="checkmark">&check;</span></td>
+                        <td><span class="xmark">&cross;</span></td>
+                        <td><span class="xmark">&cross;</span></td>
                     </tr>
                     <tr>
                         <td>Success Fee</td>
@@ -1638,37 +1871,37 @@
                     </tr>
                     <tr>
                         <td>White-Labeled</td>
-                        <td class="caprae"><span class="checkmark">✓</span></td>
-                        <td><span class="xmark">✗</span></td>
+                        <td class="caprae"><span class="checkmark">&check;</span></td>
+                        <td><span class="xmark">&cross;</span></td>
                         <td>N/A</td>
                         <td>Sometimes</td>
                     </tr>
                     <tr>
                         <td>Post-Acquisition Support</td>
-                        <td class="caprae"><span class="checkmark">✓</span></td>
+                        <td class="caprae"><span class="checkmark">&check;</span></td>
                         <td>Limited</td>
-                        <td><span class="xmark">✗</span></td>
-                        <td><span class="xmark">✗</span></td>
+                        <td><span class="xmark">&cross;</span></td>
+                        <td><span class="xmark">&cross;</span></td>
                     </tr>
                 </table>
             </div>
 
             <div class="why-caprae">
-                <h2>Why Caprae</h2>
+                <h2 class="fade-in-element">Why Caprae</h2>
                 <div class="why-grid">
-                    <div class="why-item">
+                    <div class="why-item fade-in-element">
                         <h3>Integrated Expertise</h3>
-                        <p>Operations, strategy, and execution all in one package — no coordination headaches.</p>
+                        <p>Operations, strategy, and execution all in one package - no coordination headaches.</p>
                     </div>
-                    <div class="why-item">
+                    <div class="why-item fade-in-element">
                         <h3>Outcome-Driven</h3>
                         <p>We succeed when you succeed. Our alignment ensures maximum effort and results.</p>
                     </div>
-                    <div class="why-item">
+                    <div class="why-item fade-in-element">
                         <h3>Flexible Engagement</h3>
                         <p>Scale up or down based on your needs. No long-term contracts, no lock-in.</p>
                     </div>
-                    <div class="why-item">
+                    <div class="why-item fade-in-element">
                         <h3>AI-Powered Edge</h3>
                         <p>Cutting-edge tools and automation deliver better results, faster, at lower cost.</p>
                     </div>
@@ -1682,34 +1915,40 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h2>CAPRAE</h2>
+                    <div class="footer-brand-header">
+                        <img src="../assets/logo/caprae-logo.png" alt="Caprae Capital" class="footer-logo-img">
+                        <h2>CAPRAE CAPITAL</h2>
+                    </div>
                     <div class="footer-tagline">Rapid Growth, Simplified</div>
                     <div class="footer-contact">
                         <p>Email: <a href="mailto:partners@capraecapital.com">partners@capraecapital.com</a></p>
-                        <p>Phone: <a href="tel:+18186360839">818-636-0839</a></p>
+                    </div>
+                    <div class="footer-social-links">
+                        <a href="https://www.linkedin.com/company/caprae-capital" target="_blank">LinkedIn</a>
+                        <a href="https://capraecapitalpartners.substack.com/" target="_blank">Substack</a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="#services">Search as a Service</a></li>
-                        <li><a href="#services">Entrepreneurship as a Service</a></li>
-                        <li><a href="#services">AI-Readiness</a></li>
-                        <li><a href="#services">Tech Development</a></li>
+                        <li><a href="#" onclick="switchTab('services'); return false;">Search as a Service</a></li>
+                        <li><a href="#" onclick="switchTab('services'); return false;">Entrepreneurship as a Service</a></li>
+                        <li><a href="#" onclick="switchTab('services'); return false;">AI-Readiness</a></li>
+                        <li><a href="#" onclick="switchTab('services'); return false;">Tech Development</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Company</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#how">How It Works</a></li>
-                        <li><a href="#results">Results</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#" onclick="switchTab('home'); return false;">Home</a></li>
+                        <li><a href="#" onclick="switchTab('how'); return false;">How It Works</a></li>
+                        <li><a href="#" onclick="switchTab('results'); return false;">Results</a></li>
+                        <li><a href="#" onclick="switchTab('pricing'); return false;">Pricing</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Caprae Capital Services. All rights reserved.</p>
+                <p>&copy; <span id="copyrightYear">2026</span> Caprae Capital Services. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1731,21 +1970,46 @@
             }
 
             // Close mobile menu
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.remove('open');
+            closeMobileMenu();
         }
 
         // Mobile menu toggle
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('open');
+            const isOpen = navLinks.classList.contains('open');
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                navLinks.classList.add('open');
+                document.querySelector('.hamburger').classList.add('active');
+                document.getElementById('mobileOverlay').classList.add('active');
+                document.body.classList.add('menu-open');
+            }
         }
 
-        // Smooth scroll to contact
+        function closeMobileMenu() {
+            document.querySelector('.nav-links').classList.remove('open');
+            document.querySelector('.hamburger').classList.remove('active');
+            document.getElementById('mobileOverlay').classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+
+        // Close on overlay tap
+        document.getElementById('mobileOverlay').addEventListener('click', closeMobileMenu);
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeMobileMenu();
+        });
+
+        // Close mobile menu if resized to desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) closeMobileMenu();
+        });
+
+        // Smooth scroll to contact / open email
         function scrollToContact() {
-            switchTab('pricing');
-            const footer = document.querySelector('footer');
-            footer.scrollIntoView({ behavior: 'smooth' });
+            window.location.href = 'mailto:partners@capraecapital.com';
         }
 
         // Update active nav link
@@ -1757,33 +2021,108 @@
             }
         });
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+        // Counter animation for stat numbers
+        function animateCounter(el) {
+            var text = el.textContent.trim();
+            var match = text.match(/^([^\d]*)([\d]+)(.*)$/);
+            if (!match) return;
+            var prefix = match[1];
+            var target = parseInt(match[2]);
+            var suffix = match[3];
+            var duration = 1800;
+            var start = performance.now();
+            el.textContent = prefix + '0' + suffix;
+            function tick(now) {
+                var progress = Math.min((now - start) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = prefix + Math.floor(eased * target) + suffix;
+                if (progress < 1) requestAnimationFrame(tick);
+            }
+            requestAnimationFrame(tick);
+        }
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+        var counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !entry.target.dataset.counted) {
+                    entry.target.dataset.counted = '1';
+                    setTimeout(function() { animateCounter(entry.target); }, 300);
+                    counterObserver.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.5 });
 
-        // Observe cards and items for animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll(
-                '.service-card, .testimonial-card, .stat-card, .team-member, .timeline-item'
-            );
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
+        document.querySelectorAll('.number, .value').forEach(function(el) {
+            counterObserver.observe(el);
         });
+
+        // Scroll reveal with auto-stagger
+        var revealObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    var el = entry.target;
+                    var parent = el.parentElement;
+                    var siblings = Array.from(parent.children).filter(function(c) {
+                        return c.classList.contains('fade-in-element');
+                    });
+                    var index = siblings.indexOf(el);
+                    var delay = index > 0 ? index * 0.08 : 0;
+                    el.style.transitionDelay = delay + 's';
+                    requestAnimationFrame(function() {
+                        el.classList.add('visible');
+                    });
+                    el.addEventListener('transitionend', function handler(e) {
+                        if (e.propertyName === 'opacity') {
+                            el.style.transitionDelay = '';
+                            el.style.willChange = '';
+                            el.classList.remove('fade-in-element', 'slide-left', 'slide-right', 'scale-up', 'visible');
+                            el.removeEventListener('transitionend', handler);
+                        }
+                    });
+                    revealObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('.fade-in-element').forEach(function(el) {
+            revealObserver.observe(el);
+        });
+
+        // Re-observe when tabs switch (elements in hidden sections need re-observation)
+        var originalSwitchTab = switchTab;
+        switchTab = function(tabName) {
+            originalSwitchTab(tabName);
+            setTimeout(function() {
+                document.querySelectorAll('.fade-in-element').forEach(function(el) {
+                    revealObserver.observe(el);
+                });
+                document.querySelectorAll('.number, .value').forEach(function(el) {
+                    if (!el.dataset.counted) counterObserver.observe(el);
+                });
+            }, 200);
+        };
+
+        // Reduced motion: skip all animations
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('.hero-enter').forEach(function(el) {
+                el.style.animation = 'none';
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+            document.querySelectorAll('.fade-in-element').forEach(function(el) {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+                el.classList.remove('fade-in-element');
+            });
+        }
+
+        // Dynamic copyright year
+        document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+
+        // Nav shrink on scroll
+        var navEl = document.querySelector('nav');
+        window.addEventListener('scroll', function() {
+            navEl.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
 
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(e) {
@@ -1791,7 +2130,7 @@
             const navLinks = document.querySelector('.nav-links');
 
             if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-                navLinks.classList.remove('open');
+                closeMobileMenu();
             }
         });
     </script>
